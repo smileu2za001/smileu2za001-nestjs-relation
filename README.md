@@ -1,8 +1,10 @@
-# Welcome to NestJS#3 Database Relation
+# Welcome to NestJS#3 Database Relationship
 <p align="center">
 <img src="https://cdn.britannica.com/93/153593-050-15D2B42F/Osama-bin-Laden.jpg" width="320" />
+  <h4><a href="https://github.com/smileu2za001/nestjs">PART1 - SQL DB Connecting</a></h4>
+  <h4><a href="https://github.com/smileu2za001/nestjs-auth">PART2 - User Authentication</a></h4>
+  <h4><a href="https://github.com/smileu2za001/smileu2za001-nestjs-relation">PART3 - Database Relationship</a></h4>
 </p>
-
 
 ## Relation
 - user..entity
@@ -70,8 +72,22 @@ export const GetUser = createParamDecorator((data, ctx: ExecutionContext): User 
 ```
 
 ## Getting Task for User
-- Is same Create Task add User:user on Controller, Service
+- Is same Header Create Task for User add 'USER:user' into getTasks()
 - Repository
 ```bash
   query.andWhere('task.userId = :userId',{userId: USER.id})
 ```
+
+## Getting User's Tasks
+- Is same Header Create Task for User add 'USER:user' into getTaskById()
+- Service
+```bash
+        const found = await this.taskRepository.findOne({ where: { id: ID, userId: USER.id } });
+```
+
+## Update User's Tasks Status
+- Is same Header Create Task for User add 'USER:user' into updateTaskStatus()
+
+
+## Detete User's Tasks Status
+- Is same Header Create Task for User add 'USER:user' into deleteTaskByID()
